@@ -1,6 +1,4 @@
-Sure! Here's a clean and professional version of your `README.md` **without emojis**:
 
----
 
 ## Cloud Infrastructure as Code with Terraform
 
@@ -110,6 +108,4 @@ terraform apply
 
 4. Access the public EC2 instance via SSH and test connectivity to the private EC2.
 
----
 
-Let me know if you want help packaging this for GitHub or making a portfolio version.
