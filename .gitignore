@@ -1,4 +1,32 @@
+# Terraform directories and files
 .terraform/
-.terraform/
-.terraform.lock.hcl # Optional: some prefer to track this
+.terraform.lock.hcl
 
+# Terraform state files (contain sensitive info)
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+
+# Override files created by editors or Terraform
+.override.tf
+
+# CLI config files
+.terraformrc
+terraform.rc
+
+# Sensitive variable files
+*.tfvars
+*.tfvars.json
+
+# Backup files
+*.backup
+
+# Editor temp files (optional)
+*.swp
+*.swo
+*~
+
+# MacOS files
+.DS_Store
