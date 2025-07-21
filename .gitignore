@@ -1,3 +1,4 @@
 .terraform/
 .terraform/
 .terraform.lock.hcl # Optional: some prefer to track this
+
