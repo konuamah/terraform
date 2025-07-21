@@ -5,13 +5,13 @@ on:
     branches:
       - main
 
-  workflow_dispatch:  # Manual trigger for apply
+  workflow_dispatch:  # Manual trigger for plan + apply
 
 jobs:
   terraform-plan:
     name: Terraform Plan
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'  # Only run on push
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'  # <-- fixed condition
 
     steps:
     - name: Checkout repo
@@ -44,8 +44,8 @@ jobs:
   terraform-apply:
     name: Terraform Apply
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'  
-    needs: terraform-plan  
+    if: github.event_name == 'workflow_dispatch'  # <-- manual only
+    needs: terraform-plan  # <-- depends on plan
 
     steps:
     - name: Checkout repo
