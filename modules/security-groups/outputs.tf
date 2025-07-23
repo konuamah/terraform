@@ -7,3 +7,5 @@ output "private_security_group_id" {
   description = "ID of the private security group"
   value       = aws_security_group.private_sg.id
 }
+
+

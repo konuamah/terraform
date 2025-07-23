@@ -1,4 +1,3 @@
-
 # =============================================================================
 # SECURITY GROUPS MODULE - modules/security-groups/main.tf
 # =============================================================================
@@ -22,6 +21,15 @@ resource "aws_security_group" "public_sg" {
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Add this block for Django port 8000
+  ingress {
+    description = "Django app port"
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]  
   }
 
   egress {
@@ -58,6 +66,22 @@ resource "aws_security_group" "private_sg" {
     to_port         = 22
     protocol        = "tcp"
     security_groups = [aws_security_group.public_sg.id]
+  }
+
+  ingress {
+    description     = "Port 8000 from public instance"
+    from_port       = 8000
+    to_port         = 8000
+    protocol        = "tcp"
+    security_groups = [aws_security_group.public_sg.id]
+  }
+
+  ingress {
+    description = "Port 8000 from specific IP"
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
+    cidr_blocks = ["197.251.224.111/32"]
   }
 
   egress {

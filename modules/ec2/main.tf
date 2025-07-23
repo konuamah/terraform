@@ -21,6 +21,8 @@ resource "aws_instance" "private_instance" {
   subnet_id                   = var.private_subnet_id
   vpc_security_group_ids      = [var.private_security_group_id]
   associate_public_ip_address = false
+  key_name = var.key_name
+
 
   user_data = <<-EOF
               #!/bin/bash
